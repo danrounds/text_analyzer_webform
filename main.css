@@ -11,8 +11,19 @@ body {
 }
 
 main {
-  max-width: 960px;
+  max-width: 600px;
   margin: 0 auto;
+}
+
+h1 {
+  font-size: 90px;
+  color: white;
+  text-shadow: 1px 0 gray, -1px 0 gray, 0 1px gray, 0 -1px gray, 2px 2px black;
+  margin-bottom: 0;
+}
+
+small {
+  margin-bottom: 10px;
 }
 
 label {
