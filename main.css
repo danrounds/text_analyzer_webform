@@ -22,8 +22,11 @@ h1 {
   margin-bottom: 0;
 }
 
-small {
-  margin-bottom: 10px;
+em {
+  font-style: normal;
+  font-weight: 900;
+  font color: white;
+  text-shadow: 1px 0 lightgray, -1px 0 lightgray, 0 1px lightgray, 0 -1px lightgray;
 }
 
 label {

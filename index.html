@@ -12,8 +12,8 @@
         <main>
             <h1>Text analyzer</h1>
             <p>This will work correctly with well-formed English examples.</p>
-            <p><small>Caveats: "Words" here are alphanumeric strings&mdash;case-insensitive&mdash;and are not checked against a dictionary. "Sentences" are delimited by periods, question marks, exclamation points, or newlines, and so leave out some fringe examples of English grammar while also incorrectly parsing some poetic and lyrical forms. Tokens certainly aren't limited to English words.</small></p>
-            <p>Paste in text below, submit, and get some stats back.</p>
+            <p><small>Caveats: "Words" here are alphanumeric strings&mdash;case-insensitive&mdash;and are not checked against a dictionary. "Sentences" are delimited by periods, question marks, exclamation points, or newlines, and so leave out some fringe examples of English grammar while also incorrectly parsing some poetic and lyrical forms. Tokens certainly aren't limited to English words. Also, we (basically)d on't handle-non-ASCII input.</small></p>
+            <p>That said, <em>have fun!</em> Paste in text below, submit, and get some awesome stats.</p>
             <form>
                 <div>
                     <label for="user-text">Text to analyze</label>
@@ -44,6 +44,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="app.js"></script>
-    <!-- <script src="http://localhost:8080/skewer"></script> <\!-- delete when done -\-> -->
+    <!-- <script src="http://localhost:8080/skewer"></script> <\!-- comment out, when done -\-> -->
 </body>
 </html>

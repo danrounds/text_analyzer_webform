@@ -3,14 +3,19 @@
 $('document').ready(function(){
     $('button').click(function() {
         var text = $('#user-text').val();
+        if (text.length > 0) {
+            
+            var n_sentences = countTextLines(text);
+            var wordlist = getTokens(text);
+            var n_words = wordlist.length;
+            var uniquesAndChars = uniqueWordsAndTotalChars(wordlist);
+            
+            output(n_sentences, n_words, uniquesAndChars);
+            return false;
+        } else {
+            $('.text-report').addClass('hidden');
+        }
 
-        var n_sentences = countTextLines(text);
-        var wordlist = getTokens(text);
-        var n_words = wordlist.length;
-        var uniquesAndChars = uniqueWordsAndTotalChars(wordlist);
-
-        output(n_sentences, n_words, uniquesAndChars);
-        return false;
     });
 });
 
@@ -20,18 +25,9 @@ function output(n_sen, n_words, uniquesAndChars) {
     // - Unique word count of the submitted text
     // - Average word length in characters of the submitted text
     // - Average sentence length in characters of the submitted text.
-    // - Words used
+    // - Unique words used
 
     var n_chars = uniquesAndChars.n_chars;
-
-    // var return_string = 'Word Count: ' + n_words + '\n';
-    // return_string += 'Sentences: ' + n_sen + '\n';
-    // return_string += 'Wordcharacters: ' + n_chars + '\n';
-    // return_string += 'Average word length: ' + n_chars / n_words + '\n';
-    // return_string += 'Average sentence length: ' + n_chars / n_sen + '\n';
-    // return_string += 'Unique words: ' + uniquesAndChars.n_uniques + '\n';
-    // return_string += 'Words: ' + uniquesAndChars.uniques.join(', ') + '\n';
-    // alert(return_string);
 
     $('.text-report').removeClass('hidden');
     $('.js-n-words').html(n_words);
@@ -77,9 +73,13 @@ function countTextLines(text) {
     return (text.match(/.*[A-Za-z0-9]+.*\n/g) || []).length;
 }
 
-function getTokens(rawString) {
+function getTokens(text) {
     // Without a dictionary lookup, we're restricted to treating
     // alphanumeric tokens as "words." RETURNS an alphanumerically sorted
     // list of tokens, removing punctuation characters
-    return rawString.toLowerCase().split(/[\n?() ,!.";:-]+/).filter(Boolean).sort();
+    //
+    // This will also fail to filter non-ASCII punctuation.
+    text = text.replace(/\u2014/g, '-');
+    // /\ Hack to make em-dashes go away, since they're in our example text
+    return text.toLowerCase().split(/[\n?() ,!.";:-]+/).filter(Boolean).sort();
 }
