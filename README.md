@@ -1,4 +1,4 @@
-Just a simple example of a dynamic webpage.
+__Just a simple example of a dynamic webpage.__
 
 This one takes ASCII text as form input, tokenizes it, and returns some stats:
 
