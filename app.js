@@ -13,6 +13,7 @@ $('document').ready(function(){
             output(n_sentences, n_words, uniquesAndChars);
             return false;
         } else {
+            // makes sure we're not displaying when the form data are invalid.
             $('.text-report').addClass('hidden');
         }
 
@@ -27,15 +28,15 @@ function output(n_sen, n_words, uniquesAndChars) {
     // - Average sentence length in characters of the submitted text.
     // - Unique words used
 
-    var n_chars = uniquesAndChars.n_chars;
+    var n_chars_total = uniquesAndChars.n_chars_total;
+    var uniqueWords = uniquesAndChars.uniqueWords;
 
-    $('.text-report').removeClass('hidden');
     $('.js-n-words').html(n_words);
-    $('.js-uniques').html(uniquesAndChars.n_uniques);
-    $('.js-word-len').html(n_chars / n_words);
-    $('.js-sen-len').html(n_chars / n_sen);
-    $('.js-words').html(uniquesAndChars.uniques.join(', '));
-
+    $('.js-uniques').html(uniqueWords.length);
+    $('.js-word-len').html(n_chars_total / n_words);
+    $('.js-sen-len').html(n_chars_total / n_sen);
+    $('.js-words').html(uniqueWords.join(', '));
+    $('.text-report').removeClass('hidden');
 }
 
 
@@ -52,8 +53,8 @@ function uniqueWordsAndTotalChars(words) {
         charCount += currentWord.length;
     }
 
-    return {uniques:uniqueWords, n_uniques:uniqueWords.length,
-            n_chars:charCount };
+    return { uniqueWords:uniqueWords, n_chars_total:charCount };
+
 }
 
 function countTextLines(text) {
