@@ -1,6 +1,6 @@
 __Just a simple example of a dynamic webpage.__
 
-This one takes ASCII text as form input, tokenizes it, and returns some stats:
+This one takes ASCII text as form input, tokenizes it, "parses" it, and returns some stats:
 
 * Total word count
 * Unique word count
