@@ -4,7 +4,6 @@ $('document').ready(function(){
     $('button').click(function() {
         var text = $('#user-text').val();
         if (text.length > 0) {
-            
             var n_sentences = countTextLines(text);
 
             var wordlist = getTokens(text);
@@ -12,12 +11,11 @@ $('document').ready(function(){
             var uniquesAndChars = uniqueWordsAndSigChars(wordlist);
             
             output(n_sentences, n_words, uniquesAndChars);
-            return false;
         } else {
             // makes sure we're not displaying when the form data are invalid.
             $('.text-report').addClass('hidden');
         }
-
+        return false;
     });
 });
 
