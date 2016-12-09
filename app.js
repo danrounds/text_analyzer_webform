@@ -6,9 +6,10 @@ $('document').ready(function(){
         if (text.length > 0) {
             
             var n_sentences = countTextLines(text);
+
             var wordlist = getTokens(text);
             var n_words = wordlist.length;
-            var uniquesAndChars = uniqueWordsAndTotalChars(wordlist);
+            var uniquesAndChars = uniqueWordsAndSigChars(wordlist);
             
             output(n_sentences, n_words, uniquesAndChars);
             return false;
@@ -40,7 +41,7 @@ function output(n_sen, n_words, uniquesAndChars) {
 }
 
 
-function uniqueWordsAndTotalChars(words) {
+function uniqueWordsAndSigChars(words) {
     // Dual purpose function: Sums the chars in our words AND generates
     // an array of the unique words.
     var uniqueWords = [];
